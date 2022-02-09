@@ -1,6 +1,6 @@
-# Terraform OpenStack rke2 module
+# Terraform OpenStack RKE
 
-**rke2** is a Terraform project defining the required resources for creating a `rke2` cluster in openstack
+**RKE** is a Terraform module defining the required resources for creating a `rke2`, `k3s` cluster in `openstack`
 
 ## Installation
 
@@ -13,11 +13,8 @@ terraform init
 ## Usage
 
 ```hcl
-module "rke2" {
-  source = "terraform-modules-openstack/terraform-openstack-rke2"
-  providers = {
-    openstack = openstack
-  }
+module "rke" {
+  source = "cktf/rke/openstack"
 
   name       = "platform"
   network_id = module.network.id
