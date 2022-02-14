@@ -1,26 +1,21 @@
-# resource "openstack_keymanager_secret_v1" "master" {
-#   name                 = "${var.name}_master_token"
-#   secret_type          = "passphrase"
-#   payload_content_type = "text/plain"
-# }
+resource "random_string" "token_id" {
+  length  = 6
+  upper   = false
+  special = false
+}
 
-# resource "openstack_keymanager_secret_v1" "worker" {
-#   name                 = "${var.name}_worker_token"
-#   secret_type          = "passphrase"
-#   payload_content_type = "text/plain"
-# }
+resource "random_string" "token_secret" {
+  length  = 16
+  upper   = false
+  special = false
+}
 
-# resource "openstack_keymanager_container_v1" "tokens" {
-#   name = "${var.name}_tokens"
-#   type = "generic"
+resource "random_string" "master_token" {
+  length  = 48
+  special = false
+}
 
-#   secret_refs {
-#     name       = "${var.name}_master_token"
-#     secret_ref = openstack_keymanager_secret_v1.master.secret_ref
-#   }
-
-#   secret_refs {
-#     name       = "${var.name}_worker_token"
-#     secret_ref = openstack_keymanager_secret_v1.worker.secret_ref
-#   }
-# }
+resource "random_string" "worker_token" {
+  length  = 48
+  special = false
+}
