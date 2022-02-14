@@ -37,6 +37,6 @@ data "openstack_networking_subnet_v2" "worker" {
 data "k8sbootstrap_auth" "this" {
   depends_on = [openstack_compute_instance_v2.master, openstack_compute_instance_v2.worker]
 
-  server = "https://${alb}:6443"
+  server = "https://${openstack_lb_loadbalancer_v2.master.vip_address}:6443"
   token  = "${random_string.token_id.result}.${random_string.token_secret.result}"
 }
