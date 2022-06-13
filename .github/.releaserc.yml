@@ -1,15 +1,13 @@
-dryRun: true
 tagFormat: "${version}"
 branches:
     - "+([0-9])?(.{+([0-9]),x}).x"
-    - { name: "main", prerelease: false }
-    - { name: "next", prerelease: true, channel: "next" }
+    - "master"
+    - "main"
 plugins:
     - "@semantic-release/commit-analyzer"
     - "@semantic-release/release-notes-generator"
-    - - "@semantic-release/exec"
-      - generateNotesCmd: printf %s ${nextRelease.version} > VERSION
-    - - "@semantic-release/exec"
-      - generateNotesCmd: printf %s ${nextRelease.channel || 'latest'} > CHANNEL
-    - - "@semantic-release/exec"
-      - generateNotesCmd: printf %s ${Buffer.from(nextRelease.notes).toString('base64')} | base64 -d > CHANGELOG
+    - "@semantic-release/changelog"
+    - "@semantic-release/github"
+    - - "@semantic-release/git"
+      - assets:
+            - CHANGELOG.md
