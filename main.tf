@@ -3,19 +3,19 @@ terraform {
   required_providers {
     tls = {
       source  = "hashicorp/tls"
-      version = "3.1.0"
+      version = "~> 3.1.0"
     }
     random = {
       source  = "hashicorp/random"
-      version = "3.1.0"
+      version = "~> 3.1.0"
     }
     openstack = {
       source  = "terraform-provider-openstack/openstack"
-      version = "1.45.0"
+      version = "~> 1.45.0"
     }
     k8sbootstrap = {
       source  = "nimbolus/k8sbootstrap"
-      version = "0.1.2"
+      version = "~> 0.1.2"
     }
   }
 }
