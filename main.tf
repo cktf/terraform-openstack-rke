@@ -11,7 +11,7 @@ terraform {
     }
     openstack = {
       source  = "terraform-provider-openstack/openstack"
-      version = "~> 1.45.0"
+      version = "~> 3.3.0"
     }
     k8sbootstrap = {
       source  = "nimbolus/k8sbootstrap"
